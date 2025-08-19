@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Containers Shoes Design System - Inspired by logo colors */
+/* All colors MUST be HSL for consistency */
+
+@layer base {
+  :root {
+    /* Brand Colors from Logo */
+    --containers-red: 0 85% 55%;
+    --containers-red-light: 0 85% 65%;
+    --containers-red-dark: 0 85% 45%;
+    --containers-blue: 215 85% 25%;
+    --containers-blue-light: 215 85% 35%;
+    --containers-blue-dark: 215 85% 15%;
+    
+    /* Core System Colors */
+    --background: 0 0% 100%;
+    --foreground: 215 85% 15%;
+
+    --card: 0 0% 99%;
+    --card-foreground: 215 85% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 85% 15%;
+
+    --primary: var(--containers-red);
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: var(--containers-blue);
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 215 15% 50%;
+
+    --accent: var(--containers-blue-light);
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 88%;
+    --input: 215 20% 92%;
+    --ring: var(--containers-red);
+
+    --radius: 0.75rem;
+    
+    /* Custom Design System Extensions */
+    --hero-gradient: linear-gradient(135deg, hsl(var(--containers-red)) 0%, hsl(var(--containers-blue)) 100%);
+    --card-gradient: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
+    --shadow-soft: 0 4px 20px -2px hsl(var(--containers-blue) / 0.1);
+    --shadow-brand: 0 8px 32px -4px hsl(var(--containers-red) / 0.2);
+    --shadow-floating: 0 20px 60px -10px hsl(var(--containers-red) / 0.25);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 215 85% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 215 85% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 215 85% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: var(--containers-red-light);
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: var(--containers-blue-light);
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 215 85% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: var(--containers-blue);
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 85% 20%;
+    --input: 215 85% 15%;
+    --ring: var(--containers-red-light);
+    
+    /* Dark Mode Overrides */
+    --card-gradient: linear-gradient(180deg, hsl(215 85% 10%) 0%, hsl(215 85% 8%) 100%);
+    --shadow-soft: 0 4px 20px -2px hsl(0 0% 0% / 0.3);
+    --shadow-brand: 0 8px 32px -4px hsl(var(--containers-red) / 0.3);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Accessibility Font Size Controls */
+  .font-size-small { font-size: 0.875rem; }
+  .font-size-normal { font-size: 1rem; }
+  .font-size-large { font-size: 1.125rem; }
+  .font-size-xl { font-size: 1.25rem; }
+  
+  /* Brand Button Variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-containers-red to-containers-blue text-white 
+           font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl 
+           transform hover:scale-105 transition-all duration-300;
+  }
+  
+  .btn-brand {
+    @apply bg-containers-red text-white hover:bg-containers-red-dark
+           font-medium px-6 py-3 rounded-lg shadow-md hover:shadow-lg
+           transition-all duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-containers-blue text-white hover:bg-containers-blue-dark
+           font-medium px-6 py-3 rounded-lg shadow-md hover:shadow-lg
+           transition-all duration-200;
+  }
+  
+  /* Card Styles */
+  .card-brand {
+    @apply bg-white dark:bg-card border border-border rounded-xl shadow-soft
+           hover:shadow-brand transition-all duration-300 overflow-hidden;
+  }
+  
+  /* Interactive Elements */
+  .interactive-scale {
+    @apply transform transition-transform duration-200 hover:scale-105 cursor-pointer;
+  }
+  
+  /* Gradients */
+  .gradient-hero { background: var(--hero-gradient); }
+  .gradient-card { background: var(--card-gradient); }
+  
+  /* Brand Colors as Utilities */
+  .bg-containers-red { background-color: hsl(var(--containers-red)); }
+  .bg-containers-blue { background-color: hsl(var(--containers-blue)); }
+  .text-containers-red { color: hsl(var(--containers-red)); }
+  .text-containers-blue { color: hsl(var(--containers-blue)); }

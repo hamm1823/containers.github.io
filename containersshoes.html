@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Containers Shoes en Mall Plaza Barranquilla. Zapatos deportivos de las mejores marcas: Nike, Adidas, Asics, On Running, New Balance. Calidad, estilo y comodidad garantizada.">
+    <meta name="keywords" content="zapatos deportivos, Nike, Adidas, Asics, On Running, New Balance, Barranquilla, Mall Plaza, tennis, calzado deportivo">
+    <meta name="author" content="Containers Shoes">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Containers Shoes - Tienda de Zapatos Deportivos en Barranquilla">
+    <meta property="og:description" content="Descubre la mejor selección de zapatos deportivos de las marcas más reconocidas del mundo en Mall Plaza Barranquilla.">
+    <meta property="og:image" content="/lovable-uploads/e6588ac3-9379-4e6d-8792-ae3e801b86e3.png">
+    <meta property="og:url" content="https://containersshoes.com">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CO">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Containers Shoes - Zapatos Deportivos Premium">
+    <meta name="twitter:description" content="Las mejores marcas de calzado deportivo en Barranquilla. Nike, Adidas, Asics y más.">
+    <meta name="twitter:image" content="/lovable-uploads/e6588ac3-9379-4e6d-8792-ae3e801b86e3.png">
+    
+    <title>Containers Shoes - Tienda de Zapatos Deportivos en Barranquilla | Nike, Adidas, Asics</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <style>
+        /* Containers Shoes Design System */
+        :root {
+            --containers-red: 0 85% 55%;
+            --containers-blue: 215 85% 25%;
+            --hero-gradient: linear-gradient(135deg, hsl(var(--containers-red)) 0%, hsl(var(--containers-blue)) 100%);
+            --shadow-floating: 0 20px 60px -10px hsl(var(--containers-red) / 0.25);
+        }
+        
+        .bg-hero-gradient { background: var(--hero-gradient); }
+        .shadow-floating { box-shadow: var(--shadow-floating); }
+        .text-containers-red { color: hsl(var(--containers-red)); }
+        .bg-containers-red { background-color: hsl(var(--containers-red)); }
+        .text-containers-blue { color: hsl(var(--containers-blue)); }
+        .bg-containers-blue { background-color: hsl(var(--containers-blue)); }
+        
+        /* Animations */
+        @keyframes fade-in {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes scale-in {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes bounce-in {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        .animate-fade-in { animation: fade-in 0.6s ease-out; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-scale-in { animation: scale-in 0.5s ease-out; }
+        .animate-bounce-in { animation: bounce-in 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+        
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+        
+        /* Custom card hover effects */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-floating);
+        }
+        
+        /* Accessibility controls */
+        .font-size-small { font-size: 0.875rem; }
+        .font-size-normal { font-size: 1rem; }
+        .font-size-large { font-size: 1.125rem; }
+        .font-size-xl { font-size: 1.25rem; }
+    </style>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "name": "Containers Shoes",
+        "description": "Tienda especializada en zapatos deportivos de las mejores marcas mundiales",
+        "url": "https://containersshoes.com",
+        "logo": "/lovable-uploads/e6588ac3-9379-4e6d-8792-ae3e801b86e3.png",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Mall Plaza Barranquilla, Local 234",
+            "addressLocality": "Barranquilla",
+            "addressRegion": "Atlántico",
+            "addressCountry": "CO"
+        },
+        "telephone": "+57-605-123-4567",
+        "openingHours": ["Mo-Sa 10:00-20:00", "Su 12:00-18:00"],
+        "priceRange": "$80-$250"
+    }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Accessibility Controls -->
+    <div id="accessibility-controls" class="fixed top-4 right-4 z-50 space-y-2">
+        <button onclick="toggleDarkMode()" class="p-2 bg-white rounded-full shadow-lg hover:shadow-xl transition-all">
+            <span id="dark-mode-icon">🌙</span>
+        </button>
+        <button onclick="changeFontSize()" class="p-2 bg-white rounded-full shadow-lg hover:shadow-xl transition-all">
+            <span>🔍</span>
+        </button>
+        <button onclick="toggleHighContrast()" class="p-2 bg-white rounded-full shadow-lg hover:shadow-xl transition-all">
+            <span>⚡</span>
+        </button>
+    </div>
+
+    <!-- Audio Player -->
+    <div id="audio-player" class="fixed bottom-4 right-4 z-50">
+        <button onclick="toggleAudio()" class="p-3 bg-containers-red text-white rounded-full shadow-lg hover:shadow-xl transition-all">
+            <span id="audio-icon">🎵</span>
+        </button>
+        <audio id="ambient-audio" loop>
+            <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+        </audio>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-gradient">
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-lg transform rotate-12 animate-float"></div>
+        <div class="absolute bottom-20 right-10 w-24 h-24 bg-white/10 rounded-lg transform -rotate-12 animate-float" style="animation-delay: 1s;"></div>
+        
+        <div class="container mx-auto px-4 z-10 text-center text-white">
+            <div class="max-w-4xl mx-auto">
+                <!-- Logo -->
+                <div class="mb-8 animate-fade-in">
+                    <img src="/lovable-uploads/e6588ac3-9379-4e6d-8792-ae3e801b86e3.png" 
+                         alt="Containers Shoes - Logo" class="h-24 md:h-32 mx-auto mb-6">
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in">
+                    <span class="block">CONTAINERS</span>
+                    <span class="block text-white/90">SHOES</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto animate-fade-in">
+                    Tu destino para zapatos deportivos de las mejores marcas en Barranquilla
+                </p>
+
+                <!-- Brand Badges -->
+                <div class="flex flex-wrap justify-center gap-3 mb-10 animate-fade-in">
+                    <span class="bg-white/20 text-white border border-white/30 px-4 py-2 rounded-full text-sm">Nike</span>
+                    <span class="bg-white/20 text-white border border-white/30 px-4 py-2 rounded-full text-sm">Adidas</span>
+                    <span class="bg-white/20 text-white border border-white/30 px-4 py-2 rounded-full text-sm">Asics</span>
+                    <span class="bg-white/20 text-white border border-white/30 px-4 py-2 rounded-full text-sm">On Running</span>
+                    <span class="bg-white/20 text-white border border-white/30 px-4 py-2 rounded-full text-sm">New Balance</span>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in">
+                    <button class="bg-white text-containers-red hover:bg-gray-50 font-semibold px-8 py-4 text-lg rounded-lg transition-all hover:scale-105">
+                        Ver Productos →
+                    </button>
+                    <button class="border-2 border-white text-white hover:bg-white/10 font-semibold px-8 py-4 text-lg rounded-lg transition-all hover:scale-105">
+                        📞 Contactar
+                    </button>
+                </div>
+
+                <!-- Store Info -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto animate-fade-in">
+                    <div class="flex items-center justify-center gap-3 text-white/90">
+                        <span>📍</span>
+                        <div class="text-left">
+                            <p class="font-semibold">Mall Plaza</p>
+                            <p class="text-sm">Barranquilla</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center gap-3 text-white/90">
+                        <span>🕒</span>
+                        <div class="text-left">
+                            <p class="font-semibold">Lun - Sáb</p>
+                            <p class="text-sm">10:00 AM - 8:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center gap-3 text-white/90">
+                        <span>📞</span>
+                        <div class="text-left">
+                            <p class="font-semibold">(605) 123-4567</p>
+                            <p class="text-sm">WhatsApp disponible</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-fade-in">
+                <h2 class="text-4xl font-bold mb-4 text-containers-red">Nuestros Productos Destacados</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                    Descubre la mejor selección de zapatos deportivos de las marcas más reconocidas del mundo
+                </p>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Nike Product -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover animate-scale-in">
+                    <div class="relative">
+                        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/99486859-0ff3-46b4-949b-2d16af2ad421/custom-nike-dunk-high-by-you-shoes.png" 
+                             alt="Nike Air Max" class="w-full h-48 object-cover">
+                        <span class="absolute top-2 left-2 bg-containers-red text-white px-2 py-1 rounded text-sm">Destacado</span>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs bg-gray-100 px-2 py-1 rounded">Nike</span>
+                        <h3 class="font-semibold text-lg mt-2">Air Max Premiere</h3>
+                        <p class="text-gray-600 text-sm">Running</p>
+                        <div class="flex items-center justify-between mt-4">
+                            <span class="text-2xl font-bold text-containers-red">$180</span>
+                            <button class="bg-containers-red text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors">
+                                🛒 Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adidas Product -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover animate-scale-in" style="animation-delay: 0.2s;">
+                    <div class="relative">
+                        <img src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/fbaf991a8bce4deabd0faf8d00ee14b0_9366/Ultraboost_22_Shoes_Black_GZ0127_01_standard.jpg" 
+                             alt="Adidas Ultraboost" class="w-full h-48 object-cover">
+                        <span class="absolute top-2 left-2 bg-containers-red text-white px-2 py-1 rounded text-sm">Destacado</span>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs bg-gray-100 px-2 py-1 rounded">Adidas</span>
+                        <h3 class="font-semibold text-lg mt-2">Ultraboost 5</h3>
+                        <p class="text-gray-600 text-sm">Running</p>
+                        <div class="flex items-center justify-between mt-4">
+                            <span class="text-2xl font-bold text-containers-red">$190</span>
+                            <button class="bg-containers-red text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors">
+                                🛒 Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Asics Product -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover animate-scale-in" style="animation-delay: 0.4s;">
+                    <div class="relative">
+                        <img src="https://images.asics.com/is/image/asics/1011B440_400_SR_RT_GLB?$zoom$" 
+                             alt="Asics Gel Kayano" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs bg-gray-100 px-2 py-1 rounded">Asics</span>
+                        <h3 class="font-semibold text-lg mt-2">Gel-Kayano 31</h3>
+                        <p class="text-gray-600 text-sm">Running</p>
+                        <div class="flex items-center justify-between mt-4">
+                            <span class="text-2xl font-bold text-containers-red">$160</span>
+                            <button class="bg-containers-red text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors">
+                                🛒 Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 animate-fade-in">
+                    <h2 class="text-4xl font-bold text-containers-red">Sobre Containers Shoes</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        Somos una tienda especializada en calzado deportivo ubicada en el corazón de Barranquilla. 
+                        Con más de 10 años de experiencia, nos dedicamos a ofrecer las mejores marcas internacionales 
+                        con la garantía de calidad que nuestros clientes merecen.
+                    </p>
+                    
+                    <!-- Features -->
+                    <div class="grid grid-cols-2 gap-4 pt-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-containers-red rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">✓</span>
+                            </div>
+                            <span class="text-sm">Marcas Originales</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-containers-red rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">✓</span>
+                            </div>
+                            <span class="text-sm">Garantía de Calidad</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-containers-red rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">✓</span>
+                            </div>
+                            <span class="text-sm">Asesoría Experta</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 bg-containers-red rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">✓</span>
+                            </div>
+                            <span class="text-sm">Mejor Precio</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative animate-fade-in">
+                    <div class="bg-gradient-to-br from-red-100 to-gray-100 rounded-2xl p-8 h-96 flex items-center justify-center card-hover">
+                        <div class="text-center space-y-4">
+                            <div class="text-6xl animate-bounce-in">👟</div>
+                            <h3 class="text-2xl font-bold text-containers-red">+10 Años</h3>
+                            <p class="text-gray-600">de experiencia en el mercado</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-fade-in">
+                <h2 class="text-4xl font-bold mb-4 text-containers-red">Contáctanos</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                    Visítanos en Mall Plaza Barranquilla o contáctanos para más información sobre nuestros productos
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Contact Cards -->
+                <div class="bg-white text-center p-6 rounded-xl shadow-lg card-hover animate-scale-in">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">📍</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Ubicación</h3>
+                    <p class="text-gray-600 mb-4">
+                        Mall Plaza Barranquilla<br>
+                        Local 234, Segundo Piso<br>
+                        Barranquilla, Colombia
+                    </p>
+                    <button class="border border-gray-300 px-4 py-2 rounded-lg hover:bg-containers-red hover:text-white transition-colors w-full">
+                        Ver en Maps
+                    </button>
+                </div>
+
+                <div class="bg-white text-center p-6 rounded-xl shadow-lg card-hover animate-scale-in" style="animation-delay: 0.2s;">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">📞</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Teléfono</h3>
+                    <p class="text-gray-600 mb-4">
+                        +57 (605) 123-4567<br>
+                        WhatsApp: +57 300 123 4567<br>
+                        Lun - Sáb: 10:00 - 20:00
+                    </p>
+                    <button class="border border-gray-300 px-4 py-2 rounded-lg hover:bg-containers-red hover:text-white transition-colors w-full">
+                        Llamar Ahora
+                    </button>
+                </div>
+
+                <div class="bg-white text-center p-6 rounded-xl shadow-lg card-hover animate-scale-in" style="animation-delay: 0.4s;">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">✉️</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Email</h3>
+                    <p class="text-gray-600 mb-4">
+                        info@containersshoes.com<br>
+                        ventas@containersshoes.com<br>
+                        Respuesta en 24 horas
+                    </p>
+                    <button class="border border-gray-300 px-4 py-2 rounded-lg hover:bg-containers-red hover:text-white transition-colors w-full">
+                        Enviar Email
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div id="chatbot" class="fixed bottom-20 left-4 z-50">
+        <button onclick="toggleChatbot()" class="p-4 bg-containers-blue text-white rounded-full shadow-lg hover:shadow-xl transition-all">
+            <span id="chat-icon">💬</span>
+        </button>
+        
+        <div id="chat-window" class="hidden absolute bottom-16 left-0 w-80 h-96 bg-white rounded-lg shadow-xl border">
+            <div class="bg-containers-blue text-white p-3 rounded-t-lg">
+                <h3 class="font-semibold">Containers Shoes - Asistente</h3>
+            </div>
+            <div class="p-4 h-64 overflow-y-auto" id="chat-messages">
+                <div class="bg-gray-100 p-2 rounded mb-2">
+                    ¡Hola! Soy tu asistente virtual de Containers Shoes. ¿En qué puedo ayudarte?
+                </div>
+            </div>
+            <div class="p-3 border-t">
+                <div class="flex gap-2">
+                    <input type="text" id="chat-input" placeholder="Escribe tu mensaje..." 
+                           class="flex-1 p-2 border rounded-lg text-sm">
+                    <button onclick="sendMessage()" class="bg-containers-blue text-white px-4 py-2 rounded-lg text-sm">
+                        Enviar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 Containers Shoes. Todos los derechos reservados.</p>
+            <p class="text-gray-400 text-sm mt-2">Mall Plaza Barranquilla - Local 234 | +57 (605) 123-4567</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        let isDarkMode = false;
+        let fontSizeLevel = 1;
+        let isHighContrast = false;
+        let isAudioPlaying = false;
+        let isChatOpen = false;
+
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark', isDarkMode);
+            document.getElementById('dark-mode-icon').textContent = isDarkMode ? '☀️' : '🌙';
+            
+            if (isDarkMode) {
+                document.body.style.backgroundColor = '#1a1a1a';
+                document.body.style.color = '#ffffff';
+            } else {
+                document.body.style.backgroundColor = '';
+                document.body.style.color = '';
+            }
+        }
+
+        // Font Size Change
+        function changeFontSize() {
+            fontSizeLevel = (fontSizeLevel % 4) + 1;
+            const sizes = ['font-size-small', 'font-size-normal', 'font-size-large', 'font-size-xl'];
+            
+            document.body.className = document.body.className.replace(/font-size-\w+/g, '');
+            document.body.classList.add(sizes[fontSizeLevel - 1]);
+        }
+
+        // High Contrast Toggle
+        function toggleHighContrast() {
+            isHighContrast = !isHighContrast;
+            if (isHighContrast) {
+                document.body.style.filter = 'contrast(150%) brightness(120%)';
+            } else {
+                document.body.style.filter = '';
+            }
+        }
+
+        // Audio Toggle
+        function toggleAudio() {
+            const audio = document.getElementById('ambient-audio');
+            const icon = document.getElementById('audio-icon');
+            
+            if (isAudioPlaying) {
+                audio.pause();
+                icon.textContent = '🎵';
+            } else {
+                audio.play();
+                icon.textContent = '🔇';
+            }
+            isAudioPlaying = !isAudioPlaying;
+        }
+
+        // Chatbot Toggle
+        function toggleChatbot() {
+            const chatWindow = document.getElementById('chat-window');
+            const chatIcon = document.getElementById('chat-icon');
+            
+            isChatOpen = !isChatOpen;
+            chatWindow.classList.toggle('hidden', !isChatOpen);
+            chatIcon.textContent = isChatOpen ? '✖️' : '💬';
+        }
+
+        // Send Message
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const messages = document.getElementById('chat-messages');
+            const message = input.value.trim();
+            
+            if (message) {
+                // Add user message
+                const userMsg = document.createElement('div');
+                userMsg.className = 'bg-blue-100 p-2 rounded mb-2 text-right';
+                userMsg.textContent = message;
+                messages.appendChild(userMsg);
+                
+                // Add bot response
+                setTimeout(() => {
+                    const botMsg = document.createElement('div');
+                    botMsg.className = 'bg-gray-100 p-2 rounded mb-2';
+                    botMsg.textContent = getBotResponse(message);
+                    messages.appendChild(botMsg);
+                    messages.scrollTop = messages.scrollHeight;
+                }, 500);
+                
+                input.value = '';
+                messages.scrollTop = messages.scrollHeight;
+            }
+        }
+
+        // Bot Responses
+        function getBotResponse(message) {
+            const responses = {
+                'hola': '¡Hola! Bienvenido a Containers Shoes. ¿Buscas algún modelo en particular?',
+                'nike': 'Tenemos excelentes modelos de Nike, incluyendo Air Max, Air Force 1 y más. ¿Te interesa alguno específico?',
+                'adidas': 'Nuestras Adidas Ultraboost son muy populares. También tenemos Stan Smith y otros modelos.',
+                'precio': 'Nuestros precios van desde $80 hasta $250. ¿Qué tipo de zapato buscas?',
+                'horario': 'Estamos abiertos de Lunes a Sábado de 10:00 AM a 8:00 PM, y Domingos de 12:00 PM a 6:00 PM.',
+                'ubicacion': 'Nos encontramos en Mall Plaza Barranquilla, Local 234, segundo piso.',
+                'default': 'Gracias por tu pregunta. Para más información específica, puedes llamarnos al (605) 123-4567.'
+            };
+            
+            const lowerMessage = message.toLowerCase();
+            for (let key in responses) {
+                if (lowerMessage.includes(key)) {
+                    return responses[key];
+                }
+            }
+            return responses.default;
+        }
+
+        // Enter key for chat
+        document.getElementById('chat-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
